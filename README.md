@@ -48,29 +48,29 @@ estoque.
 # Estrutura do projeto
 
 O projeto é organizado da seguinte forma:
-/projeto-gerenciamento-estoque
-│
-├── /src/
-│├── Produto.cpp
-│├── GerenciamentoDeProduto.cpp
-│├── Busca.cpp
-│├── RelatorioVenda.cpp
-│├── HistoricoDeTransacao.cpp
-│
-├── /include/
-│├── Produto.hpp
-│├── GerenciamentoDeProduto.hpp
-│├── Busca.hpp
-│├── RelatorioVenda.hpp
-│├── HistoricoDeTransacao.hpp
-│
-├── /build/
-│├── Produto.o
-│├── GerenciamentoDeProduto.o
-│├── Busca.o
-│├── RelatorioVenda.o
-│├── HistoricoDeTransacao.o
-│
+/projeto-gerenciamento-estoque \
+│\
+├── /src/\
+│├── Produto.cpp\
+│├── GerenciamentoDeProduto.cpp\
+│├── Busca.cpp\
+│├── RelatorioVenda.cpp\
+│├── HistoricoDeTransacao.cpp\
+│\
+├── /include/\
+│├── Produto.hpp\
+│├── GerenciamentoDeProduto.hpp\
+│├── Busca.hpp\
+│├── RelatorioVenda.hpp\
+│├── HistoricoDeTransacao.hpp\
+│\
+├── /build/\
+│├── Produto.o\
+│├── GerenciamentoDeProduto.o\
+│├── Busca.o\
+│├── RelatorioVenda.o\
+│├── HistoricoDeTransacao.o\
+│\
 
 # Instruções de instalação e uso
 
