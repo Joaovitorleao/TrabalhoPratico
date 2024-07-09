@@ -25,7 +25,7 @@ integridade das movimentações de estoque.
 
 # Cartões CRC
 
-![alt text](<Cartao CRC.png>)
+![Imagem 1 - Cartões CRC](<Cartao CRC.png>)
 
 # Descrição do projeto e aplicação
 
