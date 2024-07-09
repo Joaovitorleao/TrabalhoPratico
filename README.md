@@ -23,6 +23,10 @@ controle financeiro da loja.
 Como gerente da loja, eu quero acessar o histórico de transação do estoque, para verificar a
 integridade das movimentações de estoque.
 
+# Cartões CRC
+
+![alt text](<Cartao CRC.png>)
+
 # Descrição do projeto e aplicação
 
 Gerenciar e organizar um estoque de uma loja de forma eficiente, é uma tarefa difícil, uma vez que
@@ -47,7 +51,7 @@ estoque.
 
 # Estrutura do projeto
 
-O projeto é organizado da seguinte forma:
+O projeto é organizado da seguinte forma:\
 /projeto-gerenciamento-estoque \
 │\
 ├── /src/\
@@ -70,7 +74,7 @@ O projeto é organizado da seguinte forma:
 │├── Busca.o\
 │├── RelatorioVenda.o\
 │├── HistoricoDeTransacao.o\
-│\
+│
 
 # Instruções de instalação e uso
 
