@@ -23,6 +23,10 @@ controle financeiro da loja.
 Como gerente da loja, eu quero acessar o histórico de transação do estoque, para verificar a
 integridade das movimentações de estoque.
 
+# Cartões CRC
+
+![Imagem 1 - Cartões CRC](<Cartao CRC.png>)
+
 # Descrição do projeto e aplicação
 
 Gerenciar e organizar um estoque de uma loja de forma eficiente, é uma tarefa difícil, uma vez que
@@ -47,29 +51,29 @@ estoque.
 
 # Estrutura do projeto
 
-O projeto é organizado da seguinte forma:
-/projeto-gerenciamento-estoque
-│
-├── /src/
-│├── Produto.cpp
-│├── GerenciamentoDeProduto.cpp
-│├── Busca.cpp
-│├── RelatorioVenda.cpp
-│├── HistoricoDeTransacao.cpp
-│
-├── /include/
-│├── Produto.hpp
-│├── GerenciamentoDeProduto.hpp
-│├── Busca.hpp
-│├── RelatorioVenda.hpp
-│├── HistoricoDeTransacao.hpp
-│
-├── /build/
-│├── Produto.o
-│├── GerenciamentoDeProduto.o
-│├── Busca.o
-│├── RelatorioVenda.o
-│├── HistoricoDeTransacao.o
+O projeto é organizado da seguinte forma:\
+/projeto-gerenciamento-estoque \
+│\
+├── /src/\
+│├── Produto.cpp\
+│├── GerenciamentoDeProduto.cpp\
+│├── Busca.cpp\
+│├── RelatorioVenda.cpp\
+│├── HistoricoDeTransacao.cpp\
+│\
+├── /include/\
+│├── Produto.hpp\
+│├── GerenciamentoDeProduto.hpp\
+│├── Busca.hpp\
+│├── RelatorioVenda.hpp\
+│├── HistoricoDeTransacao.hpp\
+│\
+├── /build/\
+│├── Produto.o\
+│├── GerenciamentoDeProduto.o\
+│├── Busca.o\
+│├── RelatorioVenda.o\
+│├── HistoricoDeTransacao.o\
 │
 
 # Instruções de instalação e uso
