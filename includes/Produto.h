@@ -10,7 +10,7 @@ using namespace std;
 class Produto {
     public:
         Produto();
-        //só adiciona um produto que ainda não existe na lista de produtos
+        //Adiciona um produto inexistente. Caso ele exista, acrescenta uma unidade
         void AdicionarProduto(string prod, float valor_compra, float valor_venda);
 
         //Garante que só consegue editar um produto que esteja na lista de produtos

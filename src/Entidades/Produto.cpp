@@ -9,7 +9,16 @@ using namespace std;
 Produto::Produto(){}
 
 void Produto::AdicionarProduto(string prod, float valor_compra, float valor_venda){
-    if(!ProdutoPertence(prod)){
+    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&prod](const Produtos& p){
+        return p.nome == prod;
+    })
+
+    if(it != listaProdutos.end()){
+        it->valorDeCompra = valor_compra;
+        it->valorDeVenda = valor_venda;
+    }
+    
+    else{
         Produtos novoProduto;
         novoProduto.nome = prod;
         novoProduto.valorDeCompra = valor_compra;
