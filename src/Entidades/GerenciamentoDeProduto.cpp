@@ -7,6 +7,11 @@ GerenciamentoDeProduto::GerenciamentoDeProduto(Produto& produto_) : produto(prod
 }
 
 void GerenciamentoDeProduto::AdicionarEstoque(const string& produto_, int quantidade_) {
+    if (quantidade_ <= 0) {
+        cout << "Quantidade inválida. Por favor, insira um valor maior que zero." << endl;
+        return;
+    }
+    
     if (produto.ProdutoPertence(produto_)) {
         estoque_[produto_] += quantidade_;
         if(quantidade_ == 1){
@@ -20,6 +25,11 @@ void GerenciamentoDeProduto::AdicionarEstoque(const string& produto_, int quanti
 }
 
 void GerenciamentoDeProduto::RemoverEstoque(const string& produto_, int quantidade_) {
+    if (quantidade_ <= 0) {
+        cout << "Quantidade inválida. Por favor, insira um valor maior que zero." << endl;
+        return;
+    }
+    
     if (produto.ProdutoPertence(produto_)) {
         if (estoque_[produto_] >= quantidade_) {
             estoque_[produto_] -= quantidade_;
