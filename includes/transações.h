@@ -1,26 +1,29 @@
 #ifndef HISTORICODETRANSACAO_H
 #define HISTORICODETRANSACAO_H
 
+#include "Produto.h"
+#include "Transacao.h"
 #include <vector>
-#include "Produto.hpp"
 
 class HistoricoDeTransacao {
 public:
-    //método para registrar uma entrada de produto no estoque
-    void registrarEntrada(const Produto& produto, int quantidade);
+    // Construtor
+    HistoricoDeTransacao();
+
+    // Métodos de Transação
+    //Soma ao contador que imprime historico
+    void adicionarTransacao(const Transacao& transacao);
+    void imprimirHistorico();
+
+    // Métodos de Produto
+    void adicionarProduto(const Produto& produto);
     
-    //método para registrar uma saída de produto do estoque
-    void registrarSaida(const Produto& produto, int quantidade);
-    
-    //método para imprimir o histórico de transações
-    void imprimirHistorico() const;
+    //Método para imprimir o historico de cada produto individualmente
+    void imprimirHistoricoIndividual();
 
 private:
-    std::vector<std::string> historico_;
-    //Armazena total de entradas
-    int  HistoricoDeTransacao::getTotalEntradas()
-    //Armazena total de saidas
-    int  HistoricoDeTransacao::getTotalSaidas()
+    std::vector<Transacao> historico_;
+    std::vector<Produto> produtos_;
 };
 
-#endif  // HISTORICODETRANSAÇAO_H
+#endif  // HISTORICODETRANSACAO_H
