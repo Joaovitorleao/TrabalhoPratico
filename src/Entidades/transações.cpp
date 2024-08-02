@@ -4,17 +4,19 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 void HistoricoDeTransacao::adicionarTransacao(const Transacao& transacao) {
     historico_.push_back(transacao);
 }
 
 void HistoricoDeTransacao::imprimirHistorico() {
-    std::cout << "Histórico de transações:" << std::endl;
+    cout << "Histórico de transações:" << endl;
     for (const auto& descricao : historico_) {
-        std::cout << "Produto: " << descricao.getProduto().getNome() << std::endl;
-        std::cout << "  Tipo: " << (descricao.getTipo() == TipoTransacao::ENTRADA ? "Entrada" : "Saída") << std::endl;
-        std::cout << "  Quantidade: " << descricao.getQuantidade() << std::endl;
-        std::cout << std::endl;
+        cout << "Produto: " << descricao.getProduto().getNome() << endl;
+        cout << "  Tipo: " << (descricao.getTipo() == TipoTransacao::ENTRADA ? "Entrada" : "Saída") endl;
+        cout << "  Quantidade: " << descricao.getQuantidade() << endl;
+        cout << endl;
     }
 }
 
@@ -31,10 +33,10 @@ void HistoricoDeTransacao::imprimirHistoricoIndividual() {
                 }
             }
         }
-        std::cout << "Produto: " << produto.getNome() << std::endl;
-        std::cout << "  Total de entradas: " << totalEntradas << std::endl;
-        std::cout << "  Total de saídas: " << totalSaidas << std::endl;
-        std::cout << std::endl;
+        cout << "Produto: " << produto.getNome() << endl;
+        cout << "  Total de entradas: " << totalEntradas << endl;
+        cout << "  Total de saídas: " << totalSaidas << endl;
+        cout << endl;
     }
 }
 
