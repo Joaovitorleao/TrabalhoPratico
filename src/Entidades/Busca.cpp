@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-
 using namespace std;
 
 Busca::Busca(Produto& produto_) : produto(produto_) {
