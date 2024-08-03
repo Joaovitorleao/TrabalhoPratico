@@ -1,4 +1,4 @@
-//#include "../includes/Busca.h" DESCOMENTAR QUANDO IMPLEMENTAR BUSCA
+#include "../includes/Busca.h"
 #include "../includes/GerenciamentoDeProduto.h"
 #include "../includes/Produto.h"
 //#include "../includes/RelatorioVenda.h" DESCOMENTAR QUANDO IMPLEMENTAR RELATORIOVENDA
