@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <list>
-
 using namespace std;
 
 class Produto {
@@ -19,22 +18,23 @@ class Produto {
         //Garante que só consegue excluir um produto que esteja na lista de produtos
         void ExcluirProduto(string id);
 
-        //Mostra todos os produtos da lista de produtos
-        void MostraProdutos();
-
         //Verifica se o produto pertence à lista de produtos
-        bool ProdutoPertence(string p);
-    
+        bool ProdutoPertence(string p); 
+		
+		// Busca o Valor da Compra
+		int BuscaValorDeCompra(string id);   
+		
+		// Busca o Valor da Venda
+		int BuscaValorDeVenda(string id);  
+   
     private:
         struct Produtos {
-            string id;
             string nome;
             float valorDeCompra;
             float valorDeVenda;
         };
 
         list<Produtos> listaProdutos;
-        string gerarIdUnico();
 };
 
 #endif
