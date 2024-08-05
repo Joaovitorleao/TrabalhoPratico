@@ -1,29 +1,48 @@
-#ifndef HISTORICODETRANSACAO_H
-#define HISTORICODETRANSACAO_H
+#ifndef HISTORICO_DE_TRANSACAO_HPP
+#define HISTORICO_DE_TRANSACAO_HPP
 
-#include "Produto.h"
-#include "Transacao.h"
 #include <vector>
+#include <string>
+#include <iostream>
 
-class HistoricoDeTransacao {
+// Classe que representa uma transação no estoque (entrada ou saída de produtos).
+class Transacao {
 public:
-    // Construtor
-    HistoricoDeTransacao();
+    // Enum para definir o tipo de transação: entrada ou saída.
+    enum Tipo {ENTRADA, SAIDA};
 
-    // Métodos de Transação
-    //Soma ao contador que imprime historico
-    void adicionarTransacao(const Transacao& transacao);
-    void imprimirHistorico();
-
-    // Métodos de Produto
-    void adicionarProduto(const Produto& produto);
+    // Construtor da classe Transacao.
+    Transacao(int idProduto, Tipo tipo, int quantidade, double valor, const std::string& data);
     
-    //Método para imprimir o historico de cada produto individualmente
-    void imprimirHistoricoIndividual();
+    // Métodos para acessar os atributos da transação.
+    int getIdProduto() const;     
+    Tipo getTipo() const;          
+    int getQuantidade() const;     
+    double getValor() const;      
+    std::string getData() const;  
 
 private:
-    std::vector<Transacao> historico_;
-    std::vector<Produto> produtos_;
+    int idProduto;                 
+    Tipo tipo;                     
+    int quantidade;                
+    double valor;                  
+    std::string data;              
 };
 
-#endif  // HISTORICODETRANSACAO_H
+// Classe que gerencia o histórico de transações do estoque.
+class HistoricoDeTransacao {
+public:
+    // Registra uma nova transação no histórico.
+    void registrarTransacao(int idProduto, Transacao::Tipo tipo, int quantidade, double valor, const std::string& data);
+
+    // Exibe todas as transações registradas no histórico.
+    void mostrarHistorico() const;
+
+    // Exibe o histórico de transações de um produto específico.
+    void mostrarHistoricoProduto(int idProduto) const;
+
+private:
+    std::vector<Transacao> historico;  // Vetor que armazena todas as transações registradas.
+};
+
+#endif  
