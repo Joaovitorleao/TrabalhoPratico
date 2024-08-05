@@ -13,20 +13,22 @@ public:
     enum Tipo {ENTRADA, SAIDA};
 
     // Construtor da classe Transacao.
-    Transacao(int idProduto, Tipo tipo, int quantidade, double valor, const std::string& data);
-    
+    Transacao(int idProduto, Tipo tipo, int quantidade, double valorDeCompra, double valorDeVenda, const std::string& data);
+
     // Métodos para acessar os atributos da transação.
     int getIdProduto() const;     
     Tipo getTipo() const;          
     int getQuantidade() const;     
-    double getValor() const;      
+    double getValorDeCompra() const;      
+    double getValorDeVenda() const;      
     std::string getData() const;  
 
 private:
     int idProduto;                 
     Tipo tipo;                     
     int quantidade;                
-    double valor;                  
+    double valorDeCompra;         
+    double valorDeVenda;          
     std::string data;              
 };
 
@@ -34,7 +36,7 @@ private:
 class HistoricoDeTransacao {
 public:
     // Registra uma nova transação no histórico.
-    void registrarTransacao(int idProduto, Transacao::Tipo tipo, int quantidade, double valor, const std::string& data);
+    void registrarTransacao(int idProduto, Transacao::Tipo tipo, int quantidade, double valorDeCompra, double valorDeVenda, const std::string& data);
 
     // Exibe todas as transações registradas no histórico.
     void mostrarHistorico() const;
