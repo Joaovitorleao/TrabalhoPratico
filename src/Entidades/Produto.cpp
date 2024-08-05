@@ -64,7 +64,7 @@ string Produto::gerarIdUnico(){
     static const char caracteres[] = 
         "123456789"
         "abcdefghijklmnopqrstuvwxyz"
-        "ABCDEFGHJKLMNOPQRSTUVWXYZ"
+        "ABCDEFGHJKLMNOPQRSTUVWXYZ";
     
     const int tamanhoId_ = 10;
     string id_;
