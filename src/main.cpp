@@ -78,10 +78,10 @@ int main(){
             }
             case 6: {
                 int idProduto;
-                cout << "Digite o ID do produto para visualizar o histórico de transações: " << endl;
+                cout << "Digite o ID do produto para visualizar o histórico: " << endl;
                 cin >> idProduto;
                 
-                cout << "Histórico de Transações para o Produto ID " << idProduto << ":" << endl;
+                cout << "Histórico de para o Produto ID " << idProduto << ":" << endl;
                 historico.mostrarHistoricoProduto(idProduto);
                 break; 
             }
