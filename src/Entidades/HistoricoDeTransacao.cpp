@@ -1,5 +1,4 @@
 #include "HistoricoDeTransacao.hpp"
-
 #include <iostream>
 
 using namespace std;
