@@ -2,7 +2,7 @@
 #include "../includes/GerenciamentoDeProduto.h"
 #include "../includes/Produto.h"
 //#include "../includes/RelatorioVenda.h" DESCOMENTAR QUANDO IMPLEMENTAR RELATORIOVENDA
-#include "../includes/Transacoes.h"
+#include "../includes/HistoricoDeTrannsacao.hpp"
 
 #include <iostream>
 #include <string>
