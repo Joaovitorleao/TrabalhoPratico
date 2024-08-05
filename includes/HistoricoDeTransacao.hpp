@@ -45,7 +45,7 @@ public:
     void mostrarHistoricoProduto(int idProduto) const;
 
 private:
-    std::vector<Transacao> historico;  // Vetor que armazena todas as transações registradas.
+    std::vector<Transacao> historico;  
 };
 
 #endif  
