@@ -18,6 +18,9 @@ class Produto {
         //Garante que só consegue excluir um produto que esteja na lista de produtos
         void ExcluirProduto(string id);
 
+        //Mostra todos os produtos da lista de produtos
+        void MostraProdutos();
+
         //Verifica se o produto pertence à lista de produtos
         bool ProdutoPertence(string p); 
 		
@@ -29,12 +32,14 @@ class Produto {
    
     private:
         struct Produtos {
+            string id;
             string nome;
             float valorDeCompra;
             float valorDeVenda;
         };
 
         list<Produtos> listaProdutos;
+        string gerarIdUnico();
 };
 
 #endif
