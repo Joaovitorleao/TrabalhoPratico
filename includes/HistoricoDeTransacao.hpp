@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "Produto.h"
 
 // Classe que representa uma transação no estoque (entrada ou saída de produtos).
 class Transacao {
