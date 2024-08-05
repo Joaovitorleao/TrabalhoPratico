@@ -71,20 +71,18 @@ int main(){
                 break;
             }
             case 5: {
+                cout << "Histórico de Transações:" << endl;
+                historico.mostrarHistorico();
+                break; 
+            }
+            case 6: {
                 int idProduto;
                 cout << "Digite o ID do produto para visualizar o histórico de transações: " << endl;
                 cin >> idProduto;
                 
                 cout << "Histórico de Transações para o Produto ID " << idProduto << ":" << endl;
                 historico.mostrarHistoricoProduto(idProduto);
-
-                cout << "Histórico de Transações:" << endl;
-                historico.mostrarHistorico();
                 break; 
-            }
-            case 6: {
-                historico.imprimirHistoricoIndividual();
-                break;
             }
             case 7: {
                 cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
