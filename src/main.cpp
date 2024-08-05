@@ -17,7 +17,8 @@ void Menu() {
     cout << "4. Mostrar todos os produtos" << endl;
     cout << "5. Histórico de transações" << endl;
     cout << "6. Histórico de produtos" << endl;
-    cout << "7. Sair" << endl;
+    cout << "7. Relatorio de vendas" << endl;
+    cout << "8. Sair" << endl;
     cout << endl << "Escolha uma opção: " << endl;
 }
 
@@ -85,6 +86,9 @@ int main(){
                 break; 
             }
             case 7: {
+                //implementar relatorio de vendas
+            }
+            case 8: {
                 cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
                 break; 
             }
