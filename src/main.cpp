@@ -2,7 +2,7 @@
 #include "../includes/GerenciamentoDeProduto.h"
 #include "../includes/Produto.h"
 //#include "../includes/RelatorioVenda.h" DESCOMENTAR QUANDO IMPLEMENTAR RELATORIOVENDA
-#include "../includes/HistoricoDeTrannsacao.hpp"
+#include "../includes/HistoricoDeTransacao.hpp"
 
 #include <iostream>
 #include <string>
@@ -71,8 +71,16 @@ int main(){
                 break;
             }
             case 5: {
-                historico.imprimirHistorico();
-                break;
+                int idProduto;
+                cout << "Digite o ID do produto para visualizar o histórico de transações: " << endl;
+                cin >> idProduto;
+                
+                cout << "Histórico de Transações para o Produto ID " << idProduto << ":" << endl;
+                historico.mostrarHistoricoProduto(idProduto);
+
+                cout << "Histórico de Transações:" << endl;
+                historico.mostrarHistorico();
+                break; 
             }
             case 6: {
                 historico.imprimirHistoricoIndividual();
