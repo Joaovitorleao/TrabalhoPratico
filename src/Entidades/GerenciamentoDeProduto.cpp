@@ -46,3 +46,11 @@ void GerenciamentoDeProduto::RemoverEstoque(const string& produto_, int quantida
         cout << "Produto " << produto_ << " não encontrado." << endl;
     }
 }
+
+int GerenciamentoDeProduto::TotalEntradas(const string& produto_) {
+        return entradas_[produto_];
+}
+
+int GerenciamentoDeProduto::TotalSaidas(const string& produto_) {
+    return saidas_[produto_];
+}
