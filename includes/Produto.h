@@ -30,6 +30,12 @@ class Produto {
 		// Busca o Valor da Venda
 		int BuscaValorDeVenda(string idProduto);  
    
+        // Adiciona a quantidade de itens desejadas no estoque
+        void AdicionarQuantidade(const string& nome, int quantidade);
+        
+        // Remove a quantidade de itens desejadas no estoque
+        void RemoverQuantidade(const string& nome, int quantidade);  
+
     private:
         struct Produtos {
             string idProduto;
