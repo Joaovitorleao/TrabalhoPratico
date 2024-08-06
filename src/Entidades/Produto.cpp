@@ -15,8 +15,7 @@ void Produto::AdicionarProduto(string prod, float valor_compra, float valor_vend
     });
 
     if(it != listaProdutos.end()){
-        it->valorDeCompra = valor_compra;
-        it->valorDeVenda = valor_venda;
+        it->quantidade++;
     }
     
     else{
@@ -25,6 +24,7 @@ void Produto::AdicionarProduto(string prod, float valor_compra, float valor_vend
         novoProduto.nome = prod;
         novoProduto.valorDeCompra = valor_compra;
         novoProduto.valorDeVenda = valor_venda;
+        novoProduto.quantidade = 1;
         listaProdutos.push_back(novoProduto);
     }
 }
@@ -46,8 +46,13 @@ void Produto::ExcluirProduto(string id){
         return p.id == id;
     });
 
-    if(it != listaProdutos.end())
-        listaProdutos.erase(it);
+    if(it != listaProdutos.end()){
+        if(it->quantidade > 1)
+            it->quantidade--;
+        else
+            listaProdutos.erase(it);
+    }
+        
 }
 
 void Produto::MostraProdutos(){
@@ -57,6 +62,7 @@ void Produto::MostraProdutos(){
         cout << "Nome: " << produto.nome << endl;
         cout << "Valor de compra: R$" << produto.valorDeCompra << endl;
         cout << "Valor de venda: R$" << produto.valorDeVenda << endl;
+        cout << "Quantidade: " << produto.quantidade << endl;
     }
 }
 

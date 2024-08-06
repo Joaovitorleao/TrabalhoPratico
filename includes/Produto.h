@@ -36,6 +36,7 @@ class Produto {
             string nome;
             float valorDeCompra;
             float valorDeVenda;
+            int quantidade;
         };
 
         list<Produtos> listaProdutos;
