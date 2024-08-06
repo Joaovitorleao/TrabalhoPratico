@@ -7,15 +7,13 @@
 class GerenciamentoDeProduto {
     public:
 
-        GerenciamentoDeProduto();
-
-        GerenciamentoDeProduto(Produto& produto_);
+        GerenciamentoDeProduto(Produto& produto);
 
         // Adiciona uma quantidade ao estoque do produto especificado
-        void AdicionarEstoque(const string& produto_, int quantidade_);
+        void AdicionarEstoque();
 
         // Remove uma quantidade do estoque do produto especificado
-        void RemoverEstoque(const string& produto_, int quantidade_);
+        void RemoverEstoque();
 
         // Contabiliza o total de entradas de um produto
         int TotalEntradas(const string& produto_);
@@ -25,7 +23,6 @@ class GerenciamentoDeProduto {
 
     private:
         Produto& produto;
-        map<string, int> estoque_; // Mapeia o nome do produto à quantidade em estoque
         map<string, int> entradas_; // Mapeia o nome do produto à quantidade de entradas
         map<string, int> saidas_; // Mapeia o nome do produto à quantidade de saídas
 };
