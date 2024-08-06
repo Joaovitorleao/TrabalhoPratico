@@ -57,7 +57,7 @@ void Produto::ExcluirProduto(string idProduto){
 
 void Produto::MostraProdutos(){
     cout << endl;
-    cout << "-------------------------------------"
+    cout << "-------------------------------------";
     cout << "****Lista de produtos: ****" << endl;
     for(const auto& produto : listaProdutos){
         cout << endl;
