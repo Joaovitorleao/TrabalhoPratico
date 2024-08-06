@@ -16,7 +16,8 @@ build/Busca.o: src/entidades/Busca.cpp include/Produto.h include/GerenciamentoDe
 build/HistoricoDeTransacao: src/entidades/HistoricoDeTransacao.cpp include/Produto.h include/HistoricoDeTransacao.hpp 
 	g++ src/entidades/HistoricoDeTransacao.cpp -c -I include -o build/HistoricoDeTransacao.o
 
-build/RelatorioVenda.o: //Esperando implementação da class
+build/RelatorioVenda.o: src/entidades/RelatorioVenda.cpp include/Produto.h include/GerenciamentoDeProduto.h include/RelatorioVenda.h
+	g++ src/entidades/RelatorioVenda.cpp -c -I include -o build/RelatorioVenda.o
 
 
 

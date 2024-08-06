@@ -2,6 +2,7 @@
 #define RELATORIOVENDA_H_
 
 #include "GerenciamentoDeProduto.h"
+#include "Produto.h"
 #include <string>
 
 class RelatorioVenda {
