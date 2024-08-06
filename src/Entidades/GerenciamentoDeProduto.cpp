@@ -7,44 +7,37 @@ using namespace std;
 GerenciamentoDeProduto::GerenciamentoDeProduto(Produto& produto_) : produto(produto_) {
 }
 
-void GerenciamentoDeProduto::AdicionarEstoque(const string& produto_, int quantidade_) {
-    if (quantidade_ <= 0) {
-        cout << "Quantidade inválida. Por favor, insira um valor maior que zero." << endl;
-        return;
-    }
-    
-    if (produto.ProdutoPertence(produto_)) {
-        estoque_[produto_] += quantidade_;
-        if(quantidade_ == 1){
-            cout << "Adicionado " << quantidade_ << " unidade de " << produto_ << " ao estoque." << endl;
-        } else {
-            cout << "Adicionado " << quantidade_ << " unidades de " << produto_ << " ao estoque." << endl;
-        }
+void GerenciamentoDeProduto::AdicionarEstoque() {
+    string nome_;
+    int quantidade_;
+
+    cout << "Digite o nome do produto: ";
+    cin >> nome_;
+
+    cout << "Digite a quantidade a ser adicionada: ";
+    cin >> quantidade_;
+
+    if(quantidade_ > 0){
+    produto.AdicionarQuantidade(nome_, quantidade_);
     } else {
-        cout << "Produto " << produto_ << " não encontrado." << endl;
+        cout << "Quantidade invalida, digite um número maior do que zero" << endl;
     }
+    cout << quantidade_ << "unidades de " << nome_ << " adicionados ao estoque!" << endl;
 }
 
-void GerenciamentoDeProduto::RemoverEstoque(const string& produto_, int quantidade_) {
-    if (quantidade_ <= 0) {
-        cout << "Quantidade inválida. Por favor, insira um valor maior que zero." << endl;
-        return;
-    }
-    
-    if (produto.ProdutoPertence(produto_)) {
-        if (estoque_[produto_] >= quantidade_) {
-            estoque_[produto_] -= quantidade_;
-            if(quantidade_ == 1){
-                cout << "Removido " << quantidade_ << " unidade de " << produto_ << " do estoque."  << endl;
-            } else {
-                cout << "Removido " << quantidade_ << " unidades de " << produto_ << " do estoque."  << endl; 
-                }
-        } else {
-            cout << "Quantidade insuficiente em estoque para " << produto_ << "."  << endl;
-        }
-    } else {
-        cout << "Produto " << produto_ << " não encontrado." << endl;
-    }
+void GerenciamentoDeProduto::RemoverEstoque() {
+    string nome_;
+    int quantidade_;
+
+    cout << "Digite o nome do produto: ";
+    cin >> nome_;
+
+    cout << "Digite a quantidade a ser removida: ";
+    cin >> quantidade_;
+
+    produto.RemoverQuantidade(nome_, quantidade_);
+
+    cout << quantidade_ << "unidades de " << nome_ << " removidos do estoque!" << endl;
 }
 
 int GerenciamentoDeProduto::TotalEntradas(const string& produto_) {
