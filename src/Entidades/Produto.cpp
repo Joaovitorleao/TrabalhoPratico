@@ -110,9 +110,11 @@ bool Produto::ProdutoPertence(const string idProduto){
 
 void Produto::AdicionarQuantidade(const string& nome, int quantidade) {
     for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
-        Produtos novoProduto = it->first;
         if (it->first.nome == nome) {
-            it->first.quantidade += quantidade;
+            Produtos novoProduto = it->first;
+            novoProduto.quantidade += quantidade;
+            mapProdutos.erase(it);
+            mapProdutos[novoProduto] = novoProduto.quantidade;
             return;
         }
     }
@@ -121,10 +123,12 @@ void Produto::AdicionarQuantidade(const string& nome, int quantidade) {
 
 void Produto::RemoverQuantidade(const string& nome, int quantidade) {
     for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
-        Produtos novoProduto = it->first;
         if (it->first.nome == nome) {
             if (it->first.quantidade >= quantidade) {
-                it->first.quantidade -= quantidade;
+                Produtos novoProduto = it->first;
+                novoProduto.quantidade -= quantidade;
+                mapProdutos.erase(it);
+                mapProdutos[novoProduto] = novoProduto.quantidade;
             } else {
                 cout << "Quantidade de itens insuficientes para remoção. Por favor, verifique a quantidades de itens no estoque e tente novamente." << endl;
                 return;
