@@ -6,6 +6,17 @@
 #include <map>
 using namespace std;
 
+ struct Produtos {
+            string idProduto;
+            string nome;
+            float valorDeCompra;
+            float valorDeVenda;
+            int quantidade = 0;
+            bool operator<(const Produtos& outro) const {
+                return idProduto < outro.idProduto;
+            }
+        };
+
 class Produto {
     public:
         Produto();
@@ -29,24 +40,6 @@ class Produto {
 		
 		// Busca o Valor da Venda
 		int BuscaValorDeVenda(string idProduto);  
-   
-        // Adiciona a quantidade de itens desejadas no estoque
-        void AdicionarQuantidade(const string& nome, int quantidade);
-        
-        // Remove a quantidade de itens desejadas no estoque
-        void RemoverQuantidade(const string& nome, int quantidade);  
-
-    private:
-        struct Produtos {
-            string idProduto;
-            string nome;
-            float valorDeCompra;
-            float valorDeVenda;
-            int quantidade = 0;
-            bool operator<(const Produtos& outro) const {
-                return idProduto < outro.idProduto;
-            }
-        };
 
         map<Produtos, int> mapProdutos; //map de struct de produtos e um int de quantidade
         string gerarIdUnico();
