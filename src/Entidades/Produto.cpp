@@ -18,7 +18,7 @@ void Produto::AdicionarProduto(string prod, float valor_compra, float valor_vend
     novoProduto.valorDeVenda = valor_venda;
 
     for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
-        if(it->first.nome == novoProduto.nome){
+        if(it.first.nome == novoProduto.nome){
             mapProdutos.erase(it);
             break;
         }
@@ -30,8 +30,8 @@ void Produto::AdicionarProduto(string prod, float valor_compra, float valor_vend
 void Produto::EditarProduto(string idProduto, string novo_nome, float novo_valor_compra, float novo_valor_venda){
 
     for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
-        if(it->first.idProduto == idProduto){
-            Produtos novoProduto = it->first;
+        if(it.first.idProduto == idProduto){
+            Produtos novoProduto = it.first;
             novoProduto.nome = novo_nome;
             novoProduto.valorDeCompra = novo_valor_compra;
             novoProduto.valorDeVenda = novo_valor_venda;
@@ -45,7 +45,7 @@ void Produto::EditarProduto(string idProduto, string novo_nome, float novo_valor
 void Produto::ExcluirProduto(string idProduto){
     
     for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
-        if(it->first.idProduto == idProduto){
+        if(it.first.idProduto == idProduto){
             mapProdutos.erase(it);
             return;
         }
@@ -54,7 +54,7 @@ void Produto::ExcluirProduto(string idProduto){
 
 void Produto::NomeMaiusculo(){
     for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
-        Produtos novoProduto = it->first;
+        Produtos novoProduto = it.first;
         string novoNome = novoProduto.nome;
         transform(novoNome.begin(), novoNome.end(), novoNome.begin(), ::toupper);
         novoProduto.nome = novoNome;
@@ -106,4 +106,29 @@ bool Produto::ProdutoPertence(const string idProduto){
         if(produto.first.idProduto == idProduto)
             return true;
     }
+}
+
+void Produto::AdicionarQuantidade(const std::string& nome, int quantidade) {
+    for (auto& it : mapProdutos) {
+        if (it.first.nomeProduto == nome) {
+            it.first.quantidade += quantidade;
+            return;
+        }
+    }
+    std::cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << std::endl;
+}
+
+void Produto::RemoverQuantidade(const std::string& nome, int quantidade) {
+    for (auto& it : mapProdutos) {
+        if (it.first.nomeProduto == nome) {
+            if (it.first.quantidade >= quantidade) {
+                it.first.quantidade -= quantidade;
+            } else {
+                cout << "Quantidade de itens insuficientes para remoção. Por favor, verifique a quantidades de itens no estoque e tente novamente." << endl;
+                return;
+            }
+            return;
+        }
+    }
+    std::cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << std::endl;
 }
