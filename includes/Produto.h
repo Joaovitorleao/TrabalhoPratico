@@ -22,7 +22,7 @@ class Produto {
         void NomeMaiusculo();
 
         //Verifica se o produto pertence à lista de produtos
-        bool ProdutoPertence(string p); 
+        bool ProdutoPertence(string idProduto); 
 		
 		// Busca o Valor da Compra
 		int BuscaValorDeCompra(string idProduto);   
@@ -36,7 +36,10 @@ class Produto {
             string nome;
             float valorDeCompra;
             float valorDeVenda;
-            int quantidade;
+            int quantidade = 0;
+            bool operator<(const Produtos& outro) const {
+                return idProduto < outro.idProduto;
+            }
         };
 
         map<Produtos, int> mapProdutos; //map de struct de produtos e um int de quantidade

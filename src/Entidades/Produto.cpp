@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <map>
 #include <random>
-
+#include <algorithm>
 #include "../../includes/Produto.h"
 
 using namespace std;
@@ -10,71 +10,63 @@ using namespace std;
 Produto::Produto(){}
 
 void Produto::AdicionarProduto(string prod, float valor_compra, float valor_venda){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&prod](const Produtos& p){
-        return p.nome == prod;
-    });
 
-    if(it != listaProdutos.end()){
-        it->quantidade += 1;
+    Produtos novoProduto;
+    novoProduto.idProduto = gerarIdUnico();
+    novoProduto.nome = prod;
+    novoProduto.valorDeCompra = valor_compra;
+    novoProduto.valorDeVenda = valor_venda;
+
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        if(it->first.nome == novoProduto.nome){
+            mapProdutos.erase(it);
+            break;
+        }
     }
     
-    else{
-        Produtos novoProduto;
-        novoProduto.idProduto = gerarIdUnico();
-        novoProduto.nome = prod;
-        novoProduto.valorDeCompra = valor_compra;
-        novoProduto.valorDeVenda = valor_venda;
-        novoProduto.quantidade = 1;
-        listaProdutos.push_back(novoProduto);
-    }
+    mapProdutos[novoProduto] = novoProduto.quantidade;
 }
 
 void Produto::EditarProduto(string idProduto, string novo_nome, float novo_valor_compra, float novo_valor_venda){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
-        return p.idProduto == idProduto;
-    });
 
-    if(it != listaProdutos.end()){
-        it->nome = novo_nome;
-        it->valorDeCompra = novo_valor_compra;
-        it->valorDeVenda = novo_valor_venda;
-    }  
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        if(it->first.idProduto == idProduto){
+            Produtos novoProduto = it->first;
+            novoProduto.nome = novo_nome;
+            novoProduto.valorDeCompra = novo_valor_compra;
+            novoProduto.valorDeVenda = novo_valor_venda;
+            mapProdutos.erase(it);
+            mapProdutos[novoProduto] = novoProduto.quantidade;
+            return;
+        }
+    }
 }
 
 void Produto::ExcluirProduto(string idProduto){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
-        return p.idProduto == idProduto;
-    });
-
-    if(it != listaProdutos.end()){
-        if(it->quantidade > 1)
-            it->quantidade--;
-        else
-            listaProdutos.erase(it);
+    
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        if(it->first.idProduto == idProduto){
+            mapProdutos.erase(it);
+            return;
+        }
     }
-        
 }
 
-void Produto::MostraProdutos(){
-    cout << endl;
-    cout << "-------------------------------------";
-    cout << "****Lista de produtos: ****" << endl;
-    for(const auto& produto : listaProdutos){
-        cout << endl;
-        cout << "Id: " << produto.idProduto << endl;
-        cout << "Nome: " << produto.nome << endl;
-        cout << "Valor de compra: R$" << produto.valorDeCompra << endl;
-        cout << "Valor de venda: R$" << produto.valorDeVenda << endl;
-        cout << "Quantidade: " << produto.quantidade << endl;
-        cout << endl;
+void Produto::NomeMaiusculo(){
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        Produtos novoProduto = it->first;
+        string novoNome = novoProduto.nome;
+        transform(novoNome.begin(), novoNome.end(), novoNome.begin(), ::toupper);
+        novoProduto.nome = novoNome;
+        mapProdutos.erase(it);
+        mapProdutos[novoProduto] = novoProduto.quantidade;
     }
 }
 
 string Produto::gerarIdUnico(){
     static const char caracteres[] = 
         "123456789"
-        "abcdefghijklmnopqrstuvwxyz"
-        "ABCDEFGHJKLMNOPQRSTUVWXYZ";
+        "abcdefghij";
     
     const int tamanhoId_ = 10;
     string idProduto_;
@@ -91,25 +83,27 @@ string Produto::gerarIdUnico(){
 }
 
 int Produto::BuscaValorDeCompra(string idProduto){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
-        return p.nome == idProduto;
-    });
-
-    if(it != listaProdutos.end())
-        return it->valorDeCompra;
+    
+    for(const auto& produto : mapProdutos){
+        if(produto.first.idProduto == idProduto){
+            return produto.first.valorDeCompra;
+        }
+    }
 }
 
 int Produto::BuscaValorDeVenda(string idProduto){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
-        return p.nome == idProduto;
-    });
-
-    if(it != listaProdutos.end())
-        return it->valorDeVenda;
+    
+    for(const auto& produto : mapProdutos){
+        if(produto.first.idProduto == idProduto){
+            return produto.first.valorDeVenda;
+        }
+    }
 }
 
 bool Produto::ProdutoPertence(const string idProduto){
-    return any_of(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos prod){
-        return prod.idProduto == idProduto;
-    });
+
+    for(const auto& produto : mapProdutos){
+        if(produto.first.idProduto == idProduto)
+            return true;
+    }
 }
