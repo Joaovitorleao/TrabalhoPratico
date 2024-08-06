@@ -72,7 +72,7 @@ void RelatorioVenda::getProdutoMenosVendido() {
 }
 
 void RelatorioVenda::getQuantidadeMaisVendido() {
-    vgetProdutoMaisVendido();
+    getProdutoMaisVendido();
     std::cout << "A quantidade do mais vendido foi: " << quantidadeMaisVendido << std::endl;
 }
 
