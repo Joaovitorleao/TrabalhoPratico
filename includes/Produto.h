@@ -13,10 +13,10 @@ class Produto {
         void AdicionarProduto(string prod, float valor_compra, float valor_venda);
 
         //Garante que só consegue editar um produto que esteja na lista de produtos
-        void EditarProduto(string id, string novo_nome, float novo_valor_compra, float novo_valor_venda);
+        void EditarProduto(string idProduto, string novo_nome, float novo_valor_compra, float novo_valor_venda);
 
         //Garante que só consegue excluir um produto que esteja na lista de produtos
-        void ExcluirProduto(string id);
+        void ExcluirProduto(string idProduto);
 
         //Mostra todos os produtos da lista de produtos
         void MostraProdutos();
@@ -25,14 +25,14 @@ class Produto {
         bool ProdutoPertence(string p); 
 		
 		// Busca o Valor da Compra
-		int BuscaValorDeCompra(string id);   
+		int BuscaValorDeCompra(string idProduto);   
 		
 		// Busca o Valor da Venda
-		int BuscaValorDeVenda(string id);  
+		int BuscaValorDeVenda(string idProduto);  
    
     private:
         struct Produtos {
-            string id;
+            string idProduto;
             string nome;
             float valorDeCompra;
             float valorDeVenda;
