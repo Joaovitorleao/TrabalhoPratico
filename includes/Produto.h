@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <list>
+#include <map>
 using namespace std;
 
 class Produto {
@@ -18,8 +18,8 @@ class Produto {
         //Garante que só consegue excluir um produto que esteja na lista de produtos
         void ExcluirProduto(string idProduto);
 
-        //Mostra todos os produtos da lista de produtos
-        void MostraProdutos();
+        //Deixa o nome dos produtos em letra maiúscula
+        void NomeMaiusculo();
 
         //Verifica se o produto pertence à lista de produtos
         bool ProdutoPertence(string p); 
@@ -39,7 +39,7 @@ class Produto {
             int quantidade;
         };
 
-        list<Produtos> listaProdutos;
+        map<Produtos, int> mapProdutos; //map de struct de produtos e um int de quantidade
         string gerarIdUnico();
 };
 
