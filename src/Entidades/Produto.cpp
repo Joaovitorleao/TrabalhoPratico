@@ -15,7 +15,7 @@ void Produto::AdicionarProduto(string prod, float valor_compra, float valor_vend
     });
 
     if(it != listaProdutos.end()){
-        it->quantidade++;
+        it->quantidade += 1;
     }
     
     else{
@@ -56,13 +56,17 @@ void Produto::ExcluirProduto(string id){
 }
 
 void Produto::MostraProdutos(){
-    cout << "Lista de produtos: " << endl;
+    cout << endl;
+    cout << "-------------------------------------"
+    cout << "****Lista de produtos: ****" << endl;
     for(const auto& produto : listaProdutos){
+        cout << endl;
         cout << "Id: " << produto.id << endl;
         cout << "Nome: " << produto.nome << endl;
         cout << "Valor de compra: R$" << produto.valorDeCompra << endl;
         cout << "Valor de venda: R$" << produto.valorDeVenda << endl;
         cout << "Quantidade: " << produto.quantidade << endl;
+        cout << endl;
     }
 }
 

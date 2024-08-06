@@ -19,7 +19,7 @@ void Menu() {
     cout << "6. Histórico de produtos" << endl;
     cout << "7. Relatorio de vendas" << endl;
     cout << "8. Sair" << endl;
-    cout << endl << "Escolha uma opção: " << endl;
+    cout << endl << "Escolha uma opção: ";
 }
 
 int main(){
@@ -36,11 +36,11 @@ int main(){
             case 1: {
                 string nome;
                 float valorCompra, valorVenda;
-                cout << "Digite o nome do produto: " << endl;
-                getline(cin, nome);
-                cout << "Digite o valor de compra do produto: " << endl;
+                cout << "Digite o nome do produto: ";
+                cin >> nome;
+                cout << "Digite o valor de compra do produto: ";
                 cin >> valorCompra;
-                cout << "Digite o valor de venda do produto: " << endl;
+                cout << "Digite o valor de venda do produto: ";
                 cin >> valorVenda;
                 produto.AdicionarProduto(nome, valorCompra, valorVenda);
                 break;
@@ -48,13 +48,13 @@ int main(){
             case 2: {
                 string id, novoNome;
                 float novoValorCompra, novoValorVenda;
-                cout << "Digite o id do produto a ser editado: " << endl;
+                cout << "Digite o id do produto a ser editado: ";
                 cin >> id;
-                cout << "Digite o novo nome do produto: " << endl;
+                cout << "Digite o novo nome do produto: ";
                 cin >> novoNome;
-                cout << "Digite o novo valor de compra do produto: " << endl;
+                cout << "Digite o novo valor de compra do produto: ";
                 cin >> novoValorCompra;
-                cout << "Digite o novo valor de venda do produto: " << endl;
+                cout << "Digite o novo valor de venda do produto: ";
                 cin >> novoValorVenda;
                 produto.EditarProduto(id, novoNome, novoValorCompra, novoValorVenda);
                 break;
@@ -62,7 +62,7 @@ int main(){
             case 3: {
                 string id;
                 int quantidade;
-                cout << "Digite o valor do id do produto a ser excluido: " << endl;
+                cout << "Digite o valor do id do produto a ser excluido: ";
                 cin >> id;
                 produto.ExcluirProduto(id);
                 break;
@@ -97,6 +97,8 @@ int main(){
                 break;
             }
         }
+        if(opcao == 8)
+            break;
     } while(opcao != 7);
 
     return 0;
