@@ -14,11 +14,13 @@ void Menu() {
     cout << "1. Adicionar produto" << endl;
     cout << "2. Editar produto" << endl;
     cout << "3. Excluir produto" << endl;
-    cout << "4. Mostrar todos os produtos" << endl;
-    cout << "5. Histórico de transações" << endl;
-    cout << "6. Histórico de produtos" << endl;
-    cout << "7. Relatorio de vendas" << endl;
-    cout << "8. Sair" << endl;
+    cout << "4. Adicionar quantidade de itens ao estoque" << endl;
+    cout << "5. Remover quantidade de itens do estoque" << endl;
+    cout << "6. Mostrar todos os produtos" << endl;
+    cout << "7. Histórico de transações" << endl;
+    cout << "8. Histórico de produtos" << endl;
+    cout << "9. Relatorio de vendas" << endl;
+    cout << "10. Sair" << endl;
     cout << endl << "Escolha uma opção: ";
 }
 
@@ -68,15 +70,49 @@ int main(){
                 break;
             }
             case 4: {
-                produto.MostraProdutos();
+                string nome;
+                int quantidade;
+                cout << "Digite o nome do produto: ";
+                cin >> nome;
+                while (true) {
+                    cout << "Digite a quantidade de itens para adicionar ao estoque: ";
+                    cin >> quantidade;
+                    if (quantidade > 0) {
+                        gerenciamento.AdicionarEstoque(nome, quantidade);
+                        break;
+                        } else {
+                        cout << "Quantidade inválida! Por favor, digite um número maior que zero." << endl;
+                        }
+                    }
                 break;
             }
             case 5: {
+                string nome;
+                int quantidade;
+                cout << "Digite o nome do produto: ";
+                cin >> nome;
+                while (true) {
+                    cout << "Digite a quantidade de itens para remover do estoque: ";
+                    cin >> quantidade;
+                    if (quantidade > 0) {
+                        gerenciamento.RemoverEstoque(nome, quantidade);
+                        break;
+                        } else {
+                        cout << "Quantidade inválida! Por favor, digite um número maior que zero." << endl;
+                        }
+                    }
+                break;
+            }
+            case 6: {
+                produto.MostraProdutos();
+                break;
+            }
+            case 7: {
                 cout << "Histórico de Transações:" << endl;
                 historico.mostrarHistorico();
                 break; 
             }
-            case 6: {
+            case 8: {
                 int idProduto;
                 cout << "Digite o ID do produto para visualizar o histórico: " << endl;
                 cin >> idProduto;
@@ -85,10 +121,10 @@ int main(){
                 historico.mostrarHistoricoProduto(idProduto);
                 break; 
             }
-            case 7: {
+            case 9: {
                 //implementar relatorio de vendas
             }
-            case 8: {
+            case 10: {
                 cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
                 break; 
             }
