@@ -115,28 +115,6 @@ Ao executar o programa, você terá acesso às funcionalidades:\
 11. Sair:
 - Encerra o programa.
 
-1. Manipulação de produto:
-- Adicionar um novo produto, com nome, ID, preço de compra e preço de venda.
-- Excluir um produto existente.
-- Alterar informações de um produto.
-
-2. Gerenciamento de quantidades de produtos:
-- Ver a quantidade de itens no estoque.
-- Indicar entrada e saída de um determinado item.
-
-3. Busca:
-- Buscar produtos por nome ou ID e tenha acesso a preço de compra, preço de venda e quantidade
-do item no estoque.
-
-4. Relatório e estatística de venda:
-- Gerar relatórios de vendas.
-- Obter estatísticas sobre os produtos mais e menos vendidos.
-- Calcular os lucros e despesas.
-
-5. Histórico de transação:
-- Registrar todas as transações do estoque (entrada e saída de itens).
-- Verificar o histórico de movimentações de estoque.
-
 # Principais dificuldades
 
 Durante o desenvolvimento do projeto, algumas dificuldades foram encontradas, tais como:
