@@ -1,3 +1,4 @@
+#include "../../includes/Produto.h" 
 #include "../../includes/HistoricoDeTransacao.hpp" 
 #include <iostream>
 
