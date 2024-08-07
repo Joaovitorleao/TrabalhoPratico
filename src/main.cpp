@@ -123,6 +123,7 @@ int main(){
                 break; 
             }
             case 9: {
+                cout << Relatório de Vendas: << endl;
                 getDespesas();
                 getLucro();
                 getProdutoMaisVendido();
