@@ -28,6 +28,7 @@ int main(){
     Produto produto;
     GerenciamentoDeProduto gerenciamento(produto);
     HistoricoDeTransacao historico;
+    RelatorioVenda relatorio(gerenciamento);
     int opcao;
 
     do {
@@ -122,6 +123,7 @@ int main(){
                 break; 
             }
             case 9: {
+                cout << "Relatório de Vendas" << endl;
                 getDespesas();
                 getLucro();
                 getProdutoMaisVendido();
