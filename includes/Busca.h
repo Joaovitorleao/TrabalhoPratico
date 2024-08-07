@@ -13,7 +13,7 @@ public:
     Busca(Produto& produto_);
 
     // Pesquisa o produto e a quantidade em estoque pelo nome do produtoi
-    void PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade);
+    void PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade, string id);
     
 
 private:
