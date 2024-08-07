@@ -2,7 +2,7 @@
 #include "../includes/GerenciamentoDeProduto.h"
 #include "../includes/Produto.h"
 #include "../includes/RelatorioVenda.h"
-#include "../includes/HistoricoDeTransacao.hpp"
+#include "../includes/HistoricoDeTransacao.h"
 
 #include <iostream>
 #include <string>
@@ -20,16 +20,17 @@ void Menu() {
     cout << "7. Histórico de transações" << endl;
     cout << "8. Histórico de produtos" << endl;
     cout << "9. Relatorio de vendas" << endl;
-    cout << "10. Sair" << endl;
+    cout << "10. Busca por um produto específico" << endl;
+    cout << "11. Sair" << endl;
     cout << endl << "Escolha uma opção: ";
 }
 
 int main(){
     Produto produto;
     GerenciamentoDeProduto gerenciamento(produto);
-    Busca busca(produto);
     HistoricoDeTransacao historico;
     RelatorioVenda relatorio(gerenciamento);
+    Busca busca(produto);
     int opcao;
 
     do {
@@ -135,6 +136,18 @@ int main(){
             case 10: {
                 cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
                 break; 
+            }
+            case 11: {
+				string pesquisa_;
+				string id;
+				float valor_compra;
+				float valor_venda;
+				int quantidade;
+
+                cout << "Digite o nome do produto a ser buscado: " << endl;
+                cin >> pesquisa_;
+                busca.PesquisarProduto(pesquisa_, id, valor_compra, valor_venda, quantidade);                
+                break;
             }
             default: {
                 cout << "Opção inválida. Tente novamente" << endl;

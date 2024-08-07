@@ -2,6 +2,8 @@
 #include <iostream>
 #include <limits>
 
+using namespace std;
+
 RelatorioVenda::RelatorioVenda(GerenciamentoDeProduto& gerenciamento)
     : gerenciamento(gerenciamento) {
 }
@@ -10,14 +12,14 @@ void RelatorioVenda::getDespesas() {
     despesas = 0.0;
 
     for (const auto& it : gerenciamento.entradas_) {
-        const std::string& produtoId = it.first;
+        const string& produtoId = it.first;
         int totalEntradas = gerenciamento.TotalEntradas(produtoId);
         float valorCompra = gerenciamento.BuscaValorDeCompra(produtoId);
 
         despesas += totalEntradas * valorCompra;
     }
 
-    std::cout << "As despesas totais foram de: R$ " << despesas << std::endl;
+    cout << "As despesas totais foram de: R$ " << despesas << endl;
 }
 
 void RelatorioVenda::getLucro() {
@@ -27,7 +29,7 @@ void RelatorioVenda::getLucro() {
     float receita = 0.0;
 
     for (const auto& it : gerenciamento.saidas_) {
-        const std::string& produtoId = it.first;
+        const string& produtoId = it.first;
         int totalSaidas = gerenciamento.TotalSaidas(produtoId);
         float valorVenda = gerenciamento.BuscaValorDeVenda(produtoId);
 
@@ -35,7 +37,7 @@ void RelatorioVenda::getLucro() {
     }
 
     lucro = receita - despesas;
-    std::cout << "O lucro foi de: R$ " << lucro << std::endl;
+    cout << "O lucro foi de: R$ " << lucro << endl;
 }
 
 void RelatorioVenda::getProdutoMaisVendido() {
@@ -43,7 +45,7 @@ void RelatorioVenda::getProdutoMaisVendido() {
     produtoMaisVendido = "";
 
     for (const auto& it : gerenciamento.saidas_) {
-        const std::string& produtoId = it.first;
+        const string& produtoId = it.first;
         int VendasProduto = gerenciamento.TotalSaidas(produtoId);
 
         if (VendasProduto > quantidadeMaisVendido) {
@@ -52,15 +54,15 @@ void RelatorioVenda::getProdutoMaisVendido() {
         }
     }
 
-    std::cout << "O produto mais vendido foi: " << produtoMaisVendido << std::endl;
+    cout << "O produto mais vendido foi: " << produtoMaisVendido << endl;
 }
 
 void RelatorioVenda::getProdutoMenosVendido() {
-    quantidadeMenosVendido = std::numeric_limits<int>::max();
+    quantidadeMenosVendido = numeric_limits<int>::max();
     produtoMenosVendido = "";
 
     for (const auto& it : gerenciamento.saidas_) {
-        const std::string& produtoId = it.first;
+        const string& produtoId = it.first;
         int VendasProduto = gerenciamento.TotalSaidas(produtoId);
 
         if (VendasProduto < quantidadeMenosVendido) {
@@ -69,15 +71,15 @@ void RelatorioVenda::getProdutoMenosVendido() {
         }
     }
 
-    std::cout << "O produto menos vendido foi: " << produtoMenosVendido << std::endl;
+    cout << "O produto menos vendido foi: " << produtoMenosVendido << endl;
 }
 
 void RelatorioVenda::getQuantidadeMaisVendido() {
     getProdutoMaisVendido();
-    std::cout << "A quantidade do mais vendido foi: " << quantidadeMaisVendido << std::endl;
+    cout << "A quantidade do mais vendido foi: " << quantidadeMaisVendido << endl;
 }
 
 void RelatorioVenda::getQuantidadeMenosVendido() {
     getProdutoMenosVendido();
-    std::cout << "A quantidade do menos vendido foi: " << quantidadeMenosVendido << std::endl;
+    cout << "A quantidade do menos vendido foi: " << quantidadeMenosVendido << endl;
 }

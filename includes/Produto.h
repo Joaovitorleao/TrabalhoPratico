@@ -15,7 +15,7 @@ using namespace std;
             bool operator<(const Produtos& outro) const {
                 return idProduto < outro.idProduto;
             }
-        };
+};
 
 class Produto {
     public:

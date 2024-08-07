@@ -8,15 +8,15 @@
 #include <map>
 #include "GerenciamentoDeProduto.h"
 
-class Busca : public Produto {
+class Busca {
 public:
     Busca(Produto& produto_);
 
     // Pesquisa o produto e a quantidade em estoque pelo nome do produtoi
-    void PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade);
+    void PesquisarProduto(string& pesquisa_, string& id, float valor_compra, float valor_venda, int quantidade);
     
 	// Mostra todos os produtos contidos na lista	
-	void MostraProdutos();
+	void MostraProdutos();	
 	
 	// Busca o Valor da Compra
 	int BuscaValorDeCompra(string idProduto);   
@@ -24,6 +24,7 @@ public:
 	// Busca o Valor da Venda
 	int BuscaValorDeVenda(string idProduto); 
 
+	
 private:
     Produto& produto;
     map<string, int> estoque_; // Mapeia o nome do produto à quantidade em estoque
