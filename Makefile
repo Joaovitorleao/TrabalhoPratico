@@ -1,23 +1,24 @@
 all: build/Produto.o build/GerenciamentoDeProduto.o build/Busca.o build/HistoricoDeTransacao.o build/RelatorioVenda.o build/main.o
-	g++ build/Produto.o build/GerenciamentoDeProduto.o build/Busca.o build/HistoricoDeTransacao build/RelatorioVenda.o build/main.o -o executar
+	g++ build/Produto.o build/GerenciamentoDeProduto.o build/Busca.o build/HistoricoDeTransacao.o build/RelatorioVenda.o build/main.o -o executar
+
+build/Produto.o: src/Entidades/Produto.cpp includes/Produto.h 
+	g++ src/Entidades/Produto.cpp -c -I include -o build/Produto.o
+
+build/GerenciamentoDeProduto.o: src/Entidades/GerenciamentoDeProduto.cpp includes/Produto.h includes/GerenciamentoDeProduto.h
+	g++ src/Entidades/GerenciamentoDeProduto.cpp -c -I include -o build/GerenciamentoDeProduto.o
+
+build/Busca.o: src/Entidades/Busca.cpp includes/Produto.h includes/GerenciamentoDeProduto.h includes/Busca.h
+	g++ src/Entidades/Busca.cpp -c -I include -o build/Busca.o
+
+build/HistoricoDeTransacao: src/Entidades/HistoricoDeTransacao.cpp includes/Produto.h includes/HistoricoDeTransacao.hpp 
+	g++ src/Entidades/HistoricoDeTransacao.cpp -c -I include -o build/HistoricoDeTransacao.o
+
+build/RelatorioVenda.o: src/Entidades/RelatorioVenda.cpp includes/Produto.h includes/GerenciamentoDeProduto.h includes/RelatorioVenda.h
+	g++ src/Entidades/RelatorioVenda.cpp -c -I include -o build/RelatorioVenda.o
 
 build/main.o: src/main.cpp
 	g++ src/main.cpp -c -I include -o build/main.o
 
-build/Produto.o: src/entidades/Produto.cpp include/Produto.h 
-	g++ src/entidades/Produto.cpp -c -I include -o build/Produto.o
-
-build/GerenciamentoDeProduto.o: src/entidades/GerenciamentoDeProduto.cpp include/Produto.h include/GerenciamentoDeProduto.h
-	g++ src/entidades/GerenciamentoDeProduto.cpp -c -I include -o build/GerenciamentoDeProduto.o
-
-build/Busca.o: src/entidades/Busca.cpp include/Produto.h include/GerenciamentoDeProduto.h include/Busca.h
-	g++ src/entidades/Busca.cpp -c -I include -o build/Busca.o
-
-build/HistoricoDeTransacao: src/entidades/HistoricoDeTransacao.cpp include/Produto.h include/HistoricoDeTransacao.hpp 
-	g++ src/entidades/HistoricoDeTransacao.cpp -c -I include -o build/HistoricoDeTransacao.o
-
-build/RelatorioVenda.o: src/entidades/RelatorioVenda.cpp include/Produto.h include/GerenciamentoDeProduto.h include/RelatorioVenda.h
-	g++ src/entidades/RelatorioVenda.cpp -c -I include -o build/RelatorioVenda.o
 
 
 
