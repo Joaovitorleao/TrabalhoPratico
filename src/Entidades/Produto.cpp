@@ -1,5 +1,3 @@
-Produto.cpp
-
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -11,49 +9,29 @@ using namespace std;
 
 Produto::Produto(){}
 
-string Produto::gerarIdUnico(){
-    static const char caracteres[] = 
-        "abcdefghijklmnopqrstuvwxyz"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "0123456789";
-    
-    int tamanhoId_ = 8;
-    string id;
-
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, sizeof(caracteres) - 2);
-
-    for(int i=0; i<tamanhoId_; i++){
-        id += caracteres[dis(gen)];
-    }
-
-    return id;
-}
-
 void Produto::AdicionarProduto(string prod, float valor_compra, float valor_venda){
     auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&prod](const Produtos& p){
         return p.nome == prod;
-    })
+    });
 
     if(it != listaProdutos.end()){
-        it->valorDeCompra = valor_compra;
-        it->valorDeVenda = valor_venda;
+        it->quantidade += 1;
     }
     
     else{
         Produtos novoProduto;
-        novoProduto.id = gerarIdUnico();
+        novoProduto.idProduto = gerarIdUnico();
         novoProduto.nome = prod;
         novoProduto.valorDeCompra = valor_compra;
         novoProduto.valorDeVenda = valor_venda;
+        novoProduto.quantidade = 1;
         listaProdutos.push_back(novoProduto);
     }
 }
 
-void Produto::EditarProduto(string id, string novo_nome, float novo_valor_compra, float novo_valor_venda){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&id](const Produtos p){
-        return p.id == id;
+void Produto::EditarProduto(string idProduto, string novo_nome, float novo_valor_compra, float novo_valor_venda){
+    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
+        return p.idProduto == idProduto;
     });
 
     if(it != listaProdutos.end()){
@@ -63,28 +41,62 @@ void Produto::EditarProduto(string id, string novo_nome, float novo_valor_compra
     }  
 }
 
-void Produto::ExcluirProduto(string id){
-    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&id](const Produtos p){
-        return p.id == id;
+void Produto::ExcluirProduto(string idProduto){
+    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
+        return p.idProduto == idProduto;
+    });
+
+    if(it != listaProdutos.end()){
+        if(it->quantidade > 1)
+            it->quantidade--;
+        else
+            listaProdutos.erase(it);
+    }
+        
+}
+
+
+
+string Produto::gerarIdUnico(){
+    static const char caracteres[] = 
+        "123456789"
+        "abcdefghijklmnopqrstuvwxyz"
+        "ABCDEFGHJKLMNOPQRSTUVWXYZ";
+    
+    const int tamanhoId_ = 10;
+    string idProduto_;
+
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dis(0, sizeof(caracteres) - 2);
+
+    for(int i=0; i<10; i++){
+        idProduto_ += caracteres[dis(gen)];
+    }
+
+    return idProduto_;
+}
+
+int Produto::BuscaValorDeCompra(string idProduto){
+    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
+        return p.nome == idProduto;
     });
 
     if(it != listaProdutos.end())
-        listaProdutos.erase(it);
+        return it->valorDeCompra;
 }
 
-bool Produto::ProdutoPertence(const string id){
-    return any_of(listaProdutos.begin(), listaProdutos.end(), [&id](const Produtos prod){
-        return prod.id == id;
+int Produto::BuscaValorDeVenda(string idProduto){
+    auto it = find_if(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos p){
+        return p.nome == idProduto;
     });
+
+    if(it != listaProdutos.end())
+        return it->valorDeVenda;
 }
 
-void Produto::MostraProdutos(){
-    cout << "Lista de produtos: " << endl;
-    for(const auto& produto : listaProdutos){
-        cout << "Id: " << produto.id << endl;
-        cout << "Nome: " << produto.nome << endl;
-        cout << "Valor de compra: " << produto.valorDeCompra << endl;
-        cout << "Valor de venda: " << produto.valorDeVenda << endl;
-        cout << "-------------------" << endl;
-    }
+bool Produto::ProdutoPertence(const string idProduto){
+    return any_of(listaProdutos.begin(), listaProdutos.end(), [&idProduto](const Produtos prod){
+        return prod.idProduto == idProduto;
+    });
 }
