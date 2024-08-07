@@ -10,11 +10,12 @@ using namespace std;
 Busca::Busca(Produto& produto_) : produto(produto_) {
 }
 
-void Busca::PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade){
+void Busca::PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade; string id){
 	
 	
     if (produto.ProdutoPertence(pesquisa_)) {
-    	    	        
+    	
+		id_ = produto.gerarIdUnico(pesquisa_);       
         valor_compra = produto.BuscaValorDeCompra(pesquisa_);
         valor_venda = produto.BuscaValorDeVenda(pesquisa_);
         if (produto.ProdutoPertence(pesquisa_)) {
@@ -31,6 +32,7 @@ void Busca::PesquisarProduto(string& pesquisa_, float valor_compra, float valor_
         valor_venda = 0;
         quantidade = 0;
     }
+    
 }
 
 
