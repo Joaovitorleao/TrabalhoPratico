@@ -27,6 +27,7 @@ void Menu() {
 int main(){
     Produto produto;
     GerenciamentoDeProduto gerenciamento(produto);
+    Busca busca(produto);
     HistoricoDeTransacao historico;
     RelatorioVenda relatorio(gerenciamento);
     int opcao;
@@ -105,7 +106,7 @@ int main(){
                 break;
             }
             case 6: {
-                produto.MostraProdutos();
+                busca.MostraProdutos();
                 break;
             }
             case 7: {
@@ -123,13 +124,13 @@ int main(){
                 break; 
             }
             case 9: {
-                cout << Relatório de Vendas: << endl;
-                getDespesas();
-                getLucro();
-                getProdutoMaisVendido();
-                getQuantidadeMaisVendido();
-                getProdutoMenosVendido();
-                getQuantidadeMenosVendido();
+                cout << "Relatório de Vendas:" << endl;
+                relatorio.getDespesas();
+                relatorio.getLucro();
+                relatorio.getProdutoMaisVendido();
+                relatorio.getQuantidadeMaisVendido();
+                relatorio.getProdutoMenosVendido();
+                relatorio.getQuantidadeMenosVendido();
             }
             case 10: {
                 cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
