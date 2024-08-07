@@ -4,35 +4,42 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-<<<<<<< HEAD
-
-=======
->>>>>>> d9128eb05da0721a96644e439ca6114af7babaea
 using namespace std;
 
 Busca::Busca(Produto& produto_) : produto(produto_) {
 }
 
-<<<<<<< HEAD
-void Busca::PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade; string id){
-	
-	
-    if (produto.ProdutoPertence(pesquisa_)) {
-    	
-		id_ = produto.gerarIdUnico(pesquisa_);       
-=======
+int Produto::BuscaValorDeCompra(string idProduto){
+    
+    for(const auto& produto : mapProdutos){
+        if(produto.first.idProduto == idProduto){
+            return produto.first.valorDeCompra;
+        }
+    }
+}
+
+int Produto::BuscaValorDeVenda(string idProduto){
+    
+    for(const auto& produto : mapProdutos){
+        if(produto.first.idProduto == idProduto){
+            return produto.first.valorDeVenda;
+        }
+    }
+}
+
+
 void Busca::PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade){
 	
 	
     if (produto.ProdutoPertence(pesquisa_)) {
     	    	        
->>>>>>> d9128eb05da0721a96644e439ca6114af7babaea
         valor_compra = produto.BuscaValorDeCompra(pesquisa_);
         valor_venda = produto.BuscaValorDeVenda(pesquisa_);
         if (produto.ProdutoPertence(pesquisa_)) {
            quantidade = estoque_[pesquisa_];
          }
-        cout << "Produto                : " << pesquisa_  << endl; 
+        
+		cout << "Produto                : " << pesquisa_  << endl; 
         cout << "Valor de Compra        : " << valor_compra  << endl; 
         cout << "Valor de Venda         : " << valor_venda  << endl; 
         cout << "Quantidade em Estoque  : " << quantidade  << endl; 
@@ -43,10 +50,20 @@ void Busca::PesquisarProduto(string& pesquisa_, float valor_compra, float valor_
         valor_venda = 0;
         quantidade = 0;
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> d9128eb05da0721a96644e439ca6114af7babaea
 }
 
-
+void Busca::MostraProdutos(){
+    cout << endl;
+    cout << "-------------------------------------";
+    cout << "*Lista de produtos: ***" << endl;
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        cout << endl;
+        Produtos produto = it->first;
+        cout << "Id: " << produto.idProduto << endl;
+        cout << "Nome: " << produto.nome << endl;
+        cout << "Valor de compra: R$" << produto.valorDeCompra << endl;
+        cout << "Valor de venda: R$" << produto.valorDeVenda << endl;
+        cout << "Quantidade: " << produto.quantidade << endl;
+        cout << endl;
+    }
+}
