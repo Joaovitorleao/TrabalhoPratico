@@ -9,10 +9,10 @@ RelatorioVenda::RelatorioVenda(GerenciamentoDeProduto& gerenciamento)
 void RelatorioVenda::getDespesas() {
     despesas = 0.0;
 
-    for (auto it : gerenciamento.estoque_) {
+    for (const auto& it : gerenciamento.entradas_) {
         const std::string& produtoId = it.first;
         int totalEntradas = gerenciamento.TotalEntradas(produtoId);
-        float valorCompra = gerenciamento.produto.BuscaValorDeCompra(produtoId);
+        float valorCompra = gerenciamento.BuscaValorDeCompra(produtoId);
 
         despesas += totalEntradas * valorCompra;
     }
@@ -25,10 +25,11 @@ void RelatorioVenda::getLucro() {
 
     lucro = 0.0;
     float receita = 0.0;
-    for (auto it : gerenciamento.estoque_) {
-        std::string& produtoId = it.first;
+
+    for (const auto& it : gerenciamento.saidas_) {
+        const std::string& produtoId = it.first;
         int totalSaidas = gerenciamento.TotalSaidas(produtoId);
-        float valorVenda = gerenciamento.produto.BuscaValorDeVenda(produtoId);
+        float valorVenda = gerenciamento.BuscaValorDeVenda(produtoId);
 
         receita += totalSaidas * valorVenda;
     }
@@ -41,8 +42,8 @@ void RelatorioVenda::getProdutoMaisVendido() {
     quantidadeMaisVendido = 0;
     produtoMaisVendido = "";
 
-    for (auto it : gerenciamento.estoque_) {
-        std::string& produtoId = it.first;
+    for (const auto& it : gerenciamento.saidas_) {
+        const std::string& produtoId = it.first;
         int VendasProduto = gerenciamento.TotalSaidas(produtoId);
 
         if (VendasProduto > quantidadeMaisVendido) {
@@ -58,7 +59,7 @@ void RelatorioVenda::getProdutoMenosVendido() {
     quantidadeMenosVendido = std::numeric_limits<int>::max();
     produtoMenosVendido = "";
 
-    for (auto it : gerenciamento.estoque_) {
+    for (const auto& it : gerenciamento.saidas_) {
         const std::string& produtoId = it.first;
         int VendasProduto = gerenciamento.TotalSaidas(produtoId);
 
