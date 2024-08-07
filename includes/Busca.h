@@ -8,7 +8,7 @@
 #include <map>
 #include "GerenciamentoDeProduto.h"
 
-class Busca {
+class Busca : public Produto{
 public:
     Busca(Produto& produto_);
 
