@@ -1,7 +1,7 @@
 #include "../includes/Busca.h"
 #include "../includes/GerenciamentoDeProduto.h"
 #include "../includes/Produto.h"
-//#include "../includes/RelatorioVenda.h" DESCOMENTAR QUANDO IMPLEMENTAR RELATORIOVENDA
+#include "../includes/RelatorioVenda.h"
 #include "../includes/HistoricoDeTransacao.hpp"
 
 #include <iostream>
@@ -122,7 +122,12 @@ int main(){
                 break; 
             }
             case 9: {
-                //implementar relatorio de vendas
+                getDespesas();
+                getLucro();
+                getProdutoMaisVendido();
+                getQuantidadeMaisVendido();
+                getProdutoMenosVendido();
+                getQuantidadeMenosVendido();
             }
             case 10: {
                 cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
