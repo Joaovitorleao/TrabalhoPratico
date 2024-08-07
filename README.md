@@ -76,7 +76,10 @@ O projeto é organizado da seguinte forma:\
 │├── RelatorioVenda.o\
 │├── HistoricoDeTransacao.o\
 │├── main.o\
-│
+├── executar.exe\
+├── Makefile\
+├── README.md\
+│\
 
 # Instruções de instalação e uso
 
@@ -89,25 +92,27 @@ Selecione qual será a ação que se deseja realizar;
 
 Ao executar o programa, você terá acesso às funcionalidades:\
 
-1. Adicionar produto;
+1. Adicionar produto:
 - Adicionar um produto no estoque, com nome, preço de compra, preço de venda e um ID será gerado para ele automaticamente.
-2. Editar produto;
+2. Editar produto:
 - Editar um produto existente no estoque, podendo ser nome, preço de compra e/ou preço de venda.
-3. Excluir produto;
+3. Excluir produto:
 - Exclui um produto do estoque.
-4. Adicionar quantidade de itens ao estoque;
+4. Adicionar quantidade de itens ao estoque:
 - Adiciona unidades de itens do produto ao estoque.
-5. Remover quantidade de itens do estoque;
+5. Remover quantidade de itens do estoque:
 - Remove unidades de itens do produto do estoque.
-6. Mostrar todos os produtos;
-- Imprime todos os produtos 
-7. Histórico de transações;
+6. Mostrar todos os produtos:
+- Imprime todos os produtos.
+7. Histórico de transações:
 - Imprime todas as transações realizadas no estoque.
-8. Histórico de produtos;
+8. Histórico de produtos:
 -Imprime o histórico do produto dado o seu ID.
-9. Relatorio de vendas;
+9. Relatorio de vendas:
 - Imprime o relatório de vendas.
-10. Sair.
+10. Pesquisar produto:
+- Pesquisa o produto pelo seu nome e retorna seu ID, valor de compra, valor de venda e a quantidade de itens no estoque.
+11. Sair:
 - Encerra o programa.
 
 1. Manipulação de produto:
