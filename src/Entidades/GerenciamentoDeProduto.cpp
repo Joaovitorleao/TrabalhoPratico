@@ -7,42 +7,44 @@ using namespace std;
 GerenciamentoDeProduto::GerenciamentoDeProduto(Produto& produto_) : produto(produto_) {
 }
 
-void GerenciamentoDeProduto::AdicionarEstoque(const string& produto_, int quantidade_) {
-    if (quantidade_ <= 0) {
-        cout << "Quantidade inválida. Por favor, insira um valor maior que zero." << endl;
-        return;
-    }
-    
-    if (produto.ProdutoPertence(produto_)) {
-        estoque_[produto_] += quantidade_;
-        if(quantidade_ == 1){
-            cout << "Adicionado " << quantidade_ << " unidade de " << produto_ << " ao estoque." << endl;
-        } else {
-            cout << "Adicionado " << quantidade_ << " unidades de " << produto_ << " ao estoque." << endl;
+void GerenciamentoDeProduto::AdicionarEstoque(const string& nome, int quantidade) {
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        if (it->first.nome == nome) {
+            Produtos novoProduto = it->first;
+            novoProduto.quantidade += quantidade;
+            mapProdutos.erase(it);
+            mapProdutos[novoProduto] = novoProduto.quantidade;
+            
+            entradas_[nome] += quantidade;
+            return;
         }
-    } else {
-        cout << "Produto " << produto_ << " não encontrado." << endl;
     }
+    cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << endl;
 }
 
-void GerenciamentoDeProduto::RemoverEstoque(const string& produto_, int quantidade_) {
-    if (quantidade_ <= 0) {
-        cout << "Quantidade inválida. Por favor, insira um valor maior que zero." << endl;
-        return;
-    }
-    
-    if (produto.ProdutoPertence(produto_)) {
-        if (estoque_[produto_] >= quantidade_) {
-            estoque_[produto_] -= quantidade_;
-            if(quantidade_ == 1){
-                cout << "Removido " << quantidade_ << " unidade de " << produto_ << " do estoque."  << endl;
+void GerenciamentoDeProduto::RemoverEstoque(const string& nome, int quantidade) {
+    for(auto it = mapProdutos.begin(); it != mapProdutos.end(); it++){
+        if (it->first.nome == nome) {
+            if (it->first.quantidade >= quantidade) {
+                Produtos novoProduto = it->first;
+                novoProduto.quantidade -= quantidade;
+                mapProdutos.erase(it);
+                mapProdutos[novoProduto] = novoProduto.quantidade;
             } else {
-                cout << "Removido " << quantidade_ << " unidades de " << produto_ << " do estoque."  << endl; 
-                }
-        } else {
-            cout << "Quantidade insuficiente em estoque para " << produto_ << "."  << endl;
+                cout << "Quantidade de itens insuficientes para remoção. Por favor, verifique a quantidades de itens no estoque e tente novamente." << endl;
+                return;
+            }
+            saidas_[nome] += quantidade;
+            return;
         }
-    } else {
-        cout << "Produto " << produto_ << " não encontrado." << endl;
     }
+    cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << endl;
+}
+
+int GerenciamentoDeProduto::TotalEntradas(const string& produto_) {
+        return entradas_[produto_];
+}
+
+int GerenciamentoDeProduto::TotalSaidas(const string& produto_) {
+    return saidas_[produto_];
 }

@@ -3,9 +3,19 @@
 
 #include <iostream>
 #include <string>
-#include <list>
-
+#include <map>
 using namespace std;
+
+ struct Produtos {
+            string idProduto;
+            string nome;
+            float valorDeCompra;
+            float valorDeVenda;
+            int quantidade = 0;
+            bool operator<(const Produtos& outro) const {
+                return idProduto < outro.idProduto;
+            }
+        };
 
 class Produto {
     public:
@@ -14,26 +24,24 @@ class Produto {
         void AdicionarProduto(string prod, float valor_compra, float valor_venda);
 
         //Garante que só consegue editar um produto que esteja na lista de produtos
-        void EditarProduto(string id, string novo_nome, float novo_valor_compra, float novo_valor_venda);
+        void EditarProduto(string idProduto, string novo_nome, float novo_valor_compra, float novo_valor_venda);
 
         //Garante que só consegue excluir um produto que esteja na lista de produtos
-        void ExcluirProduto(string id);
+        void ExcluirProduto(string idProduto);
 
-        //Mostra todos os produtos da lista de produtos
-        void MostraProdutos();
+        //Deixa o nome dos produtos em letra maiúscula
+        void NomeMaiusculo();
 
         //Verifica se o produto pertence à lista de produtos
-        bool ProdutoPertence(string p);
-    
-    private:
-        struct Produtos {
-            string id;
-            string nome;
-            float valorDeCompra;
-            float valorDeVenda;
-        };
+        bool ProdutoPertence(string idProduto); 
+		
+		// Busca o Valor da Compra
+		int BuscaValorDeCompra(string idProduto);   
+		
+		// Busca o Valor da Venda
+		int BuscaValorDeVenda(string idProduto);  
 
-        list<Produtos> listaProdutos;
+        map<Produtos, int> mapProdutos; //map de struct de produtos e um int de quantidade
         string gerarIdUnico();
 };
 

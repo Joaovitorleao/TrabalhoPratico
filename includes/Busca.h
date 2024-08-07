@@ -13,7 +13,11 @@ public:
     Busca(Produto& produto_);
 
     // Pesquisa o produto e a quantidade em estoque pelo nome do produtoi
+<<<<<<< HEAD
     void PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade, string id);
+=======
+    void PesquisarProduto(string& pesquisa_, float valor_compra, float valor_venda, int quantidade);
+>>>>>>> d9128eb05da0721a96644e439ca6114af7babaea
     
 
 private:
@@ -23,6 +27,9 @@ private:
 };
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d9128eb05da0721a96644e439ca6114af7babaea
 #endif

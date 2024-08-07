@@ -43,9 +43,8 @@ estoque.
 
 A interface principal do sistema é composta por cinco módulos:
 1. Manipulação do produto: adicionar, excluir e alterar produtos no estoque.
-2. Gerenciamento de quantidade de produtos: indicar entradas, saídas e a quantidade de itens no
-estoque.
-3. Busca: buscar produtos por nome, preço, ID etc.
+2. Gerenciamento de quantidade de produtos: indicar entradas, saídas.
+3. Busca: buscar produtos por nome, e conseguir visualizar preço de compra, preço de venda, ID e quantidade de itens do produto no estoque, além de conseguir ver essas informações de todos os produtos de uma só vez.
 4. Relatório e estatística de venda: gerar relatórios e estatísticas, de vendas, lucros e despesas.
 5. Histórico de transação: registrar transações do estoque.
 
@@ -55,11 +54,13 @@ O projeto é organizado da seguinte forma:\
 /projeto-gerenciamento-estoque \
 │\
 ├── /src/\
-│├── Produto.cpp\
-│├── GerenciamentoDeProduto.cpp\
-│├── Busca.cpp\
-│├── RelatorioVenda.cpp\
-│├── HistoricoDeTransacao.cpp\
+│├── /Entidades/\
+││├── Produto.cpp\
+││├── GerenciamentoDeProduto.cpp\
+││├── Busca.cpp\
+││├── RelatorioVenda.cpp\
+││├── HistoricoDeTransacao.cpp\
+│├── main.cpp\
 │\
 ├── /include/\
 │├── Produto.hpp\
@@ -74,6 +75,7 @@ O projeto é organizado da seguinte forma:\
 │├── Busca.o\
 │├── RelatorioVenda.o\
 │├── HistoricoDeTransacao.o\
+│├── main.o\
 │
 
 # Instruções de instalação e uso
@@ -85,7 +87,7 @@ Compile o código;\
 Execute o programa;\
 Selecione qual será a ação que se deseja realizar;
 
-Ao executar o programa, você terá acesso a várias funcionalidades:
+Ao executar o programa, você terá acesso às funcionalidades:
 1. Manipulação de produto:
 - Adicionar um novo produto, com nome, ID, preço de compra e preço de venda.
 - Excluir um produto existente.
@@ -110,21 +112,27 @@ do item no estoque.
 
 # Principais dificuldades
 
-Durante o desenvolvimento do projeto, algumas dificuldades poderão ser encontradas, tais como:
+Durante o desenvolvimento do projeto, algumas dificuldades foram encontradas, tais como:
 
 1. Desafios técnicos:
 - Implementação de uma estrutura eficiente para armazenar e acessar rapidamente as
-informações do produto.
+informações do produto;
 - Garantir que as operações de busca sejam rápidas e precisas.
 
 2. Obstáculos de design:
-- Definir uma arquitetura de classe e fácil de manter.
+- Definir uma arquitetura de classe e fácil de manter;
 - Integrar os diferentes módulos do sistema de forma coesa.
 
 3. Integração:
-- Assegurar que as alterações no gerenciamento de produtos serão refletidas corretamente nos
-relatórios e históricos.
+- Assegurar que as alterações no gerenciamento de produtos estão refletidas corretamente nos
+relatórios e históricos;
 - Garantir a integridade dos dados durante as operações de transação de estoque.
+
+4. Gerenciamento de Conflitos:
+- Lidar com conflitos ao integrar contribuições de diferentes membros da equipe no 
+repositório de código;
+- Assegurar que as mudanças feitas em uma parte do código não afetem negativamente 
+outras partes do sistema.
 
 # Desenvolvedores
 
