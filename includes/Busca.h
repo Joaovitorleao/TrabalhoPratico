@@ -12,7 +12,7 @@ class Busca : public Produto{
 public:
     Busca(Produto& produto_);
 
-    // Pesquisa o produto e a quantidade em estoque pelo nome do produtoi
+    // Pesquisa o produto e a quantidade em estoque pelo nome do produto
     void PesquisarProduto(string& pesquisa_);
     
 	// Mostra todos os produtos contidos na lista	

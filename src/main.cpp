@@ -21,7 +21,7 @@ void Menu() {
     cout << "7. Histórico de transações" << endl;
     cout << "8. Histórico de produtos" << endl;
     cout << "9. Relatorio de vendas" << endl;
-    cout << "10. Busca por um produto específico" << endl;
+    cout << "10. Pesquisar produto" << endl;
     cout << "11. Sair" << endl;
     cout << endl << "Escolha uma opção: ";
 }
