@@ -86,11 +86,11 @@ O projeto é organizado da seguinte forma:\
 Clone o repositório do projeto em um arquivo pessoal;\
 Disponível em: https://github.com/Joaovitorleao/TrabalhoPratico.git\
 Navegue até o diretório do projeto;\
-Compile o código;\
-Execute o programa;\
+Compile o código, com o comando "make";\
+Execute o programa, dando o comando "./executar";\
 Selecione qual será a ação que se deseja realizar;
 
-Ao executar o programa, você terá acesso às funcionalidades:\
+Ao executar o programa, você terá acesso às funcionalidades:
 
 1. Adicionar produto:
 - Adicionar um produto no estoque, com nome, preço de compra, preço de venda e um ID será gerado para ele automaticamente.
