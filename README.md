@@ -84,7 +84,7 @@ O projeto é organizado da seguinte forma:\
 # Instruções de instalação e uso
 
 Clone o repositório do projeto em um arquivo pessoal;\
-Disponível em: https://github.com/Joaovitorleao/TrabalhoPratico.git\
+Disponível em: https://github.com/Joaovitorleao/TrabalhoPratico.git ;\
 Navegue até o diretório do projeto;\
 Compile o código, com o comando "make";\
 Execute o programa, dando o comando "./executar";\
