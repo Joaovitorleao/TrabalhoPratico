@@ -2,7 +2,7 @@
 #include "../includes/GerenciamentoDeProduto.h"
 #include "../includes/Produto.h"
 #include "../includes/RelatorioVenda.h"
-#include "../includes/HistoricoDeTransacao.h"
+#include "../includes/HistoricoDeTransacao.hpp"
 
 #include <iostream>
 #include <string>
@@ -10,6 +10,7 @@
 using namespace std;
 
 void Menu() {
+    cout << endl;
     cout << "====== Menu de gerenciamento de estoque ======" << endl;
     cout << "1. Adicionar produto" << endl;
     cout << "2. Editar produto" << endl;
@@ -29,8 +30,8 @@ int main(){
     Produto produto;
     GerenciamentoDeProduto gerenciamento(produto);
     HistoricoDeTransacao historico;
-    RelatorioVenda relatorio(gerenciamento);
     Busca busca(produto);
+    RelatorioVenda relatorio(gerenciamento, busca);
     int opcao;
 
     do {
@@ -95,9 +96,9 @@ int main(){
                 cout << "Digite o nome do produto: ";
                 cin >> nome;
                 while (true) {
-                    cout << "Digite a quantidade de itens para remover do estoque: ";
-                    cin >> quantidade;
-                    if (quantidade > 0) {
+                        cout << "Digite a quantidade de itens para remover do estoque: ";
+                        cin >> quantidade;
+                        if (quantidade > 0) {
                         gerenciamento.RemoverEstoque(nome, quantidade);
                         break;
                         } else {
@@ -133,30 +134,25 @@ int main(){
                 relatorio.getProdutoMenosVendido();
                 relatorio.getQuantidadeMenosVendido();
             }
+
             case 10: {
-                cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
-                break; 
-            }
-            case 11: {
 				string pesquisa_;
-				string id;
-				float valor_compra;
-				float valor_venda;
-				int quantidade;
 
                 cout << "Digite o nome do produto a ser buscado: " << endl;
                 cin >> pesquisa_;
-                busca.PesquisarProduto(pesquisa_, id, valor_compra, valor_venda, quantidade);                
+                busca.PesquisarProduto(pesquisa_);                
                 break;
             }
-            default: {
+            case 11: {
+                cout << "Saindo do programa. Obrigado por utilizar nosso sistema!" << endl;
+                break; 
+            }
+             default: {
                 cout << "Opção inválida. Tente novamente" << endl;
                 break;
             }
         }
-        if(opcao == 8)
-            break;
-    } while(opcao != 7);
+    } while(opcao != 11);
 
     return 0;
 }

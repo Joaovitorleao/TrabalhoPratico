@@ -3,11 +3,12 @@
 
 #include "GerenciamentoDeProduto.h"
 #include "Produto.h"
+#include "Busca.h"
 #include <string>
 
 class RelatorioVenda {
     public:
-        RelatorioVenda(GerenciamentoDeProduto& gerenciamento);
+        RelatorioVenda(GerenciamentoDeProduto& gerenciamento, Busca& busca);
 
         //Calcula e informa as despesas pelo número de entradas e o preço de compra de cada produto
         void getDespesas();
@@ -24,6 +25,7 @@ class RelatorioVenda {
 
     private:
         GerenciamentoDeProduto& gerenciamento;
+        Busca& busca;
         float lucro;
         float despesas;
         std::string produtoMaisVendido;

@@ -1,11 +1,13 @@
 #include "../../includes/RelatorioVenda.h"
+#include "../../includes/Produto.h"
+#include "../../includes/Busca.h"
 #include <iostream>
 #include <limits>
 
 using namespace std;
 
-RelatorioVenda::RelatorioVenda(GerenciamentoDeProduto& gerenciamento)
-    : gerenciamento(gerenciamento) {
+RelatorioVenda::RelatorioVenda(GerenciamentoDeProduto& gerenciamento, Busca& busca)
+    : gerenciamento(gerenciamento), busca(busca) {
 }
 
 void RelatorioVenda::getDespesas() {
@@ -14,7 +16,7 @@ void RelatorioVenda::getDespesas() {
     for (const auto& it : gerenciamento.entradas_) {
         const string& produtoId = it.first;
         int totalEntradas = gerenciamento.TotalEntradas(produtoId);
-        float valorCompra = gerenciamento.BuscaValorDeCompra(produtoId);
+        float valorCompra = busca.BuscaValorDeCompra(produtoId);
 
         despesas += totalEntradas * valorCompra;
     }
@@ -31,7 +33,7 @@ void RelatorioVenda::getLucro() {
     for (const auto& it : gerenciamento.saidas_) {
         const string& produtoId = it.first;
         int totalSaidas = gerenciamento.TotalSaidas(produtoId);
-        float valorVenda = gerenciamento.BuscaValorDeVenda(produtoId);
+        float valorVenda = busca.BuscaValorDeVenda(produtoId);
 
         receita += totalSaidas * valorVenda;
     }

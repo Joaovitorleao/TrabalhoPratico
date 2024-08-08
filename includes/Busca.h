@@ -13,21 +13,20 @@ public:
     Busca(Produto& produto_);
 
     // Pesquisa o produto e a quantidade em estoque pelo nome do produtoi
-    void PesquisarProduto(string& pesquisa_, string& id, float valor_compra, float valor_venda, int quantidade);
+    void PesquisarProduto(string& pesquisa_);
     
 	// Mostra todos os produtos contidos na lista	
 	void MostraProdutos();	
 	
 	// Busca o Valor da Compra
-	int BuscaValorDeCompra(string idProduto);   
+	float BuscaValorDeCompra(string idProduto);   
 		
 	// Busca o Valor da Venda
-	int BuscaValorDeVenda(string idProduto); 
+	float BuscaValorDeVenda(string idProduto); 
 
 	
 private:
     Produto& produto;
-    map<string, int> estoque_; // Mapeia o nome do produto à quantidade em estoque
     string pesquisa_;
 };
 

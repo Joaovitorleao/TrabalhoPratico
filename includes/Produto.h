@@ -34,12 +34,6 @@ class Produto {
 
         //Verifica se o produto pertence à lista de produtos
         bool ProdutoPertence(string idProduto); 
-		
-		// Busca o Valor da Compra
-		int BuscaValorDeCompra(string idProduto);   
-		
-		// Busca o Valor da Venda
-		int BuscaValorDeVenda(string idProduto);  
 
         map<Produtos, int> mapProdutos; //map de struct de produtos e um int de quantidade
         string gerarIdUnico();

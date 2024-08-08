@@ -16,10 +16,11 @@ void GerenciamentoDeProduto::AdicionarEstoque(const string& nome, int quantidade
             mapProdutos[novoProduto] = novoProduto.quantidade;
             
             entradas_[nome] += quantidade;
-            return;
+        }
+            if(it == mapProdutos.end()){
+                 cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << endl;
         }
     }
-    cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << endl;
 }
 
 void GerenciamentoDeProduto::RemoverEstoque(const string& nome, int quantidade) {
@@ -32,13 +33,14 @@ void GerenciamentoDeProduto::RemoverEstoque(const string& nome, int quantidade) 
                 mapProdutos[novoProduto] = novoProduto.quantidade;
             } else {
                 cout << "Quantidade de itens insuficientes para remoção. Por favor, verifique a quantidades de itens no estoque e tente novamente." << endl;
-                return;
             }
             saidas_[nome] += quantidade;
-            return;
+            if(it == mapProdutos.end()){
+                 cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << endl;
+            }       
         }
     }
-    cout << "Produto não encontrado. Por favor, verifique o nome do produto e tente novamente." << endl;
+
 }
 
 int GerenciamentoDeProduto::TotalEntradas(const string& produto_) {
